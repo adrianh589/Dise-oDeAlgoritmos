@@ -1,34 +1,24 @@
 
 public class votantesDatos {
 	
-	private String nombre;
-	private int costo;
+	private double nombre;
 	private double soborno;
 	
 	votantesDatos() {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public votantesDatos(String nombre, int costo, double soborno) {
-		this.nombre = nombre;
-		this.costo = costo;
+	public votantesDatos(double nombre, double soborno) {
+		this.nombre =  nombre;
 		this.soborno = soborno;
 	}
 
-	public String getNombre() {
+	public double getNombre() {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
+	public void setNombre(double nombre) {
 		this.nombre = nombre;
-	}
-
-	public int getCosto() {
-		return costo;
-	}
-
-	public void setCosto(int costo) {
-		this.costo = costo;
 	}
 
 	public double getSoborno() {
@@ -38,6 +28,8 @@ public class votantesDatos {
 	public void setSoborno(double soborno) {
 		this.soborno = soborno;
 	}
+
+	
 	
 	
 
