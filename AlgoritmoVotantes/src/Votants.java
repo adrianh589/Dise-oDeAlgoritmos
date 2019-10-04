@@ -9,12 +9,11 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * 
- * @author adrian
  *Clase que calcula el soborno que se le debe generar a un votante
  *para que vote por el candidato que nosotros deseemos, al final 
  *genera una tabla con el 70% de los votantes a los que se les desea
  *reducir costos
+ * @author Adrian Hoyos
  */
 public class Votants {
 	
@@ -31,26 +30,31 @@ public class Votants {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		
 		//lectura de la cantidad de candidatos
-		System.out.println("Introduzca la cantidad de candidatos");
-		candidatos = Integer.parseInt(br.readLine());
+		System.out.println( "Introduzca la cantidad de candidatos" );
+		candidatos = Integer.parseInt(br.readLine());		
 		
 		//lectura de la cantidad de votantes
 		System.out.println("introduzca la cantidad de votantes");
 		votantes = Integer.parseInt(br.readLine());
 		
-		//matriz, se amplia su tamaño debido a los costos y sobornos
+		//matriz, se amplia su tamanio debido a los costos y sobornos
 		double matriz[][] = new double [votantes+1][candidatos+3] ;
 		
 		//Se genera la matriz SIN sobornos
 		matriz = generarMatriz(matriz);
 		
+		//Se visualizan la matriz generada
+		imprimirMatriz(matriz);
+		
 		//Matriz con sobornos calculados
 		matriz = sobornos(matriz);
+		
+		System.out.println("Los sobornos generados por el candidato m"+ ganador  +" por cada votante son: ");
 		
 		//Se visualizan los valores en consola
 		imprimirMatriz(matriz);
 		
-		//añadir al arrayList el votante con su soborno
+		//anadir al arrayList el votante con su soborno
 		relacionarVotantesConSobornosGenerados(matriz);
 		
 		//Se ordena el array mediante el soborno en orden ascendente
@@ -72,72 +76,37 @@ public class Votants {
 		
 		//bucle para llenar candidatos y votantes (etiquetas)
 		for (int i = 0; i < matriz.length; i++) {
-			probabilidades = generadorProbabilidades(candidatos);//pribabilidad de cada votante
+			probabilidades = generadorProbabilidades(candidatos);//probabilidad de cada votante
 			for (int j = 0; j < matriz[i].length; j++) {
-				
-				//separacion inicial de la matriz
-				if(i==0 && j == 0) {
-					System.out.print("    ");
-				}
 				
 				//introducir los candidatos
 				if(i == 0 && j > 0 && j <  matriz[i].length-2) {
 					matriz[i][j] = m;
 					m++;
-					System.out.print("m"+df.format(matriz[i][j])+"  ");
-				}
-				
-				//introducir el costo y la barra de separacion
-				if(i == 0 && j == matriz[i].length-2) {
-					System.out.print("Costo");
-				}
-				
-				//introducir el soborno y la barra de separacion
-				if(i == 0 && j == matriz[i].length-1) {
-					
-					System.out.println(" Soborno");
-					System.out.print("--------------------------");
 				}
 				
 				//introducir los votantes
 				if(i > 0 && j == 0) {
 					matriz[i][j] = n;
 					n++;
-					if(matriz[i][j] > 0 && matriz[i][j] < 10) {
-						System.out.print("n0"+df.format(matriz[i][j])+"|");
-					}else {
-						System.out.print("n"+df.format(matriz[i][j])+"|");
-					}
 				}
 				
 				//introducir las probabilidades
 				if(i > 0 && j > 0 && j < matriz[i].length-2) {
 					matriz[i][j] = probabilidades[j-1];
-					if(matriz[i][j] == 0 || matriz[i][j] > 0 && matriz[i][j] < 10) {
-						System.out.print("0"+df.format(matriz[i][j])+"% ");
-					}else {
-						System.out.print(df.format(matriz[i][j])+"% ");
-					}
 				}
 				
 				//Introducir los costos
 				if(j == matriz[i].length-2 && i > 0) {
 					matriz[i][j] = rd.nextInt(10)+1;
-					if(matriz[i][j] < 10) {
-						System.out.print(df.format(matriz[i][j])+" ");
-					}else {
-						System.out.print(df.format(matriz[i][j]));
-					}
 				}
 				
 				//Poner en 0 el valor del soborno
 				if(j == matriz[i].length-1 && i > 0) {
 					matriz[i][j] = 0;
-					System.out.print("     "+matriz[i][j]);
 				}
 				
 			}
-			System.out.println();
 		}
 		
 		return matriz;
@@ -158,7 +127,7 @@ public class Votants {
 				probabilidadTotal += inicio;
 			}else {
 				if(i == array.length-1 || probabilidadTotal == 100) {
-					array[i] = 100-probabilidadTotal;
+					array[i] = 100 - probabilidadTotal;
 				}else {
 					int secuencia = array[i] = rd.nextInt(100-probabilidadTotal) + 1;
 					probabilidadTotal += secuencia;
@@ -170,14 +139,21 @@ public class Votants {
 	}
 	
 	/**
-	 * metodo para sobornar los votantes
+	 * Metodo para sobornar los votantes
 	 * @throws IOException 
 	 * @throws NumberFormatException 
 	 */
 	static double [][] sobornos(double matriz[][]) throws NumberFormatException, IOException{
+		boolean bandera = false;
 		
-		System.out.println("Introduzca el candidato que quiere que gane (solo el numero)");
-		ganador = Integer.parseInt(br.readLine());
+		while(bandera == false){
+			try {
+				System.out.println("Introduzca el candidato que quiere que gane (SOLO EL NUMERO) y dentro del rango que es de 1 a "+candidatos);
+				ganador = Integer.parseInt(br.readLine());
+				if(ganador > 0 && ganador <= candidatos) {bandera = true;}
+			}catch(Exception e) { bandera = false; }
+		}
+		
 		
 		double costo = 0;
 		double probabilidadASobornar = 0; 
@@ -203,8 +179,6 @@ public class Votants {
 	 * @param matriz
 	 */
 	static void imprimirMatriz(double [][] matriz) {
-		
-		System.out.println("Los sobornos generados por el candidato "+ candidatos  +" por cada votante son: ");
 		
 		for (int i = 0; i < matriz.length; i++) {
 			for (int j = 0; j < matriz[i].length; j++) {
@@ -298,6 +272,7 @@ public class Votants {
 		}
 		
 		System.out.println("Votante | Soborno");
+		System.out.println("-----------------");
 		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < array[i].length; j++) {
 				if(j == 0) {
