@@ -30,12 +30,20 @@ public class Votants {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		
 		//lectura de la cantidad de candidatos
-		System.out.println( "Introduzca la cantidad de candidatos" );
-		candidatos = Integer.parseInt(br.readLine());		
+		do {
+			try {
+				System.out.println( "Introduzca la cantidad de candidatos" );
+				candidatos = Integer.parseInt(br.readLine());	
+			}catch(NumberFormatException e) {}
+		}while(candidatos == 0 || candidatos < 0);
 		
 		//lectura de la cantidad de votantes
-		System.out.println("introduzca la cantidad de votantes");
-		votantes = Integer.parseInt(br.readLine());
+		do {
+			try {
+				System.out.println( "Introduzca la cantidad de votantes" );
+				votantes = Integer.parseInt(br.readLine());	
+			}catch(NumberFormatException e) {}
+		}while(votantes == 0 || votantes < 0);
 		
 		//matriz, se amplia su tamanio debido a los costos y sobornos
 		double matriz[][] = new double [votantes+1][candidatos+3] ;
