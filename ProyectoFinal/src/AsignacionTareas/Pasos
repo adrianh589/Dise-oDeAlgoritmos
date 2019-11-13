@@ -1,0 +1,13 @@
+Primero debo establecer la matriz de las tareas
+Caso base: cuando llegue a la solucion, osea que ya todas las personas tengan tareas asignadas, debo guardar esa solucion para poder compararla
+¿Que debo guardar en la solucion actual?: Debo guardar unicamente la persona y la tarea que fue asignada, los demas datos no me interesan
+Tambien debo almacenar el coste que tiene esa solucion, puesto que lo que mas me interesa es el coste minimo que puede desarrollar una persona en menos tiempo
+Debo tener en cuenta que cuando se le asigna uan tarea a una persona, esta tarea ya no la puedo asignar a otra persona, osea que debo "tachr" en cruz para evitar
+que se pueda seleccionar tanto la tarea como la persona
+
+1)Saber la cantidad de tareas, puesto que las tareas seran igual al numero de persona, una tabla seria la mejor opcion
+2)Si le doy a una persona una tarea, ya no se puede seleccionar ni la misma persona ni la misma tarea
+3)Una vez halla escogido yo una solucion, debo memorizar que persona le asigne tal tarea y el coste que esta genero y de momento esta seria la solucion mas optima
+4)Luego, yo deberia devolverme
+
+
