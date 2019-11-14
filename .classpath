@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="AlgoritmoFiguras/src"/>
+	<classpathentry kind="src" path="AlgoritmoMonedas/src"/>
+	<classpathentry kind="src" path="AlgoritmoVotantes/src"/>
+	<classpathentry kind="src" path="Backtracking/src"/>
+	<classpathentry kind="src" path="CostoAlgoritmos/src"/>
+	<classpathentry kind="src" path="ProgramaTaxista/src"/>
+	<classpathentry kind="src" path="ProyectoFinal/src"/>
+	<classpathentry kind="output" path="AlgoritmoFiguras/bin"/>
+</classpath>

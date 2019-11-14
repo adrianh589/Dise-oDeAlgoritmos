@@ -3,6 +3,11 @@ package AsignacionTareas;
 import java.util.ArrayList;
 import java.util.Stack;
 
+/**
+ * Clase BackTracking que se emplea para la asignacion de tareas
+ * @author Adrian Hoyos
+ *
+ */
 public class BackTracking {
 
     
@@ -10,12 +15,21 @@ public class BackTracking {
     static int minimoCoste = Integer.MAX_VALUE;
     static ArrayList<int[][]> solucionFinal= new ArrayList<int[][]>();
 
+    /**
+     * Metodo para realizar el backtracking
+     * @param tablero
+     * @param persona
+     * @param tarea
+     * @param bloquearPersona
+     * @param bloquearTarea
+     * @param solucionParcial
+     */
     public static void backtracking( int[][] tablero, int persona, int tarea, Stack<Integer> bloquearPersona, Stack<Integer> bloquearTarea, int[][] solucionParcial ) {
 
         if (esSolucion(solucionParcial)) {//Caso base
             solucionFinal.add(clonarMatriz(solucionParcial));//Añadimos esa solucion como postulante
             imprimir(solucionParcial);//Imprimimos la solucion parcial
-            System.out.println("Esta solucion por el momento es la mas óptima con un coste de: "+darCoste(solucionParcial)+"\n");
+            System.out.println("Esta solucion por el momento es la mas optima con un coste de: "+darCoste(solucionParcial)+"\n");
             minimoCoste = sumaActual;//El minimo coste ahora es la solucion encontrada
             sumaActual -= solucionParcial[bloquearPersona.peek()][bloquearTarea.peek()];//Reducimos el coste actual puesto que nos estamos devolviendo
             solucionParcial[bloquearPersona.pop()][bloquearTarea.pop()] = 0;//Eliminamos la solucion parcial
@@ -98,6 +112,11 @@ public class BackTracking {
 
     }
 
+    /**
+     * Metodo para clonar la matriz, debido a que se modifica
+     * @param solucion
+     * @return
+     */
     static int[][] clonarMatriz(int[][] solucion){
         int[][] aux = new int [solucion.length][solucion.length];
 
@@ -111,6 +130,10 @@ public class BackTracking {
 
     }
 
+    /**
+     * Metodo que dice las posibles soluciones dependiendo del coste minimo
+     * @param solucionesFinales
+     */
     public static void darPosiblesSoluciones(ArrayList<int[][]> solucionesFinales){
 
         System.out.println("Las posibles soluciones segun el coste generado son: \n");
