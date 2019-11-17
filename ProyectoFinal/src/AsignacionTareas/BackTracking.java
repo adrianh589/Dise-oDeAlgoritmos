@@ -1,4 +1,7 @@
+package AsignacionTareas;
+
 import java.util.Stack;
+import java.util.Timer;
 
 public class BackTracking {
 
@@ -18,7 +21,7 @@ public class BackTracking {
         if(esSolucion(solucion)){
             minimoCoste = conteo;
             solucionFinal = solucion;
-            imprimir(solucion);
+            //imprimir(solucion);
             System.out.println("Costo minimo encontrado: "+conteo+" \n");
             return false;//Al llegar al final nos devolvemos
         }else{
@@ -32,8 +35,9 @@ public class BackTracking {
 
                         if(conteo > minimoCoste){//Nos devolvemos si el costo supera al minimo
                             System.out.println("El costo de esta via es "+conteo+" y el minimo costo es de "+minimoCoste+" se hara vuelta atras");
-                            imprimir(solucion);
                             if(tarea == tablero.length-1) {//Si hay mas tareas disponibles no podemos devolvernos todavia
+                            	solucion[persona][tarea] = 0; conteo -= tablero[persona][tarea]; bloquearTarea.pop();
+                            	imprimir(solucion);
                                 return false;
                             }else{//En caso de que hayan tareas disponibles, eliminamos lo temporal y vamos a preguntar por la siguiente tarea
                                 solucion[persona][tarea] = 0; conteo -= tablero[persona][tarea]; bloquearTarea.pop();
@@ -44,7 +48,7 @@ public class BackTracking {
                             //Aqui es donde se indica que vamos a avanzar, se observa que se llama la misma funcion pero con persona + 1
                             VueltaAtras(tablero, persona+1, conteo, recordarTareas(bloquearTarea), solucionActual(solucion));
                             //Borramos lo que llevamos
-                                conteo -= tablero[persona][tarea]; bloquearTarea.pop(); solucion[persona][tarea] = 0; imprimir(solucion);
+                             conteo -= tablero[persona][tarea]; bloquearTarea.pop(); solucion[persona][tarea] = 0; imprimir(solucion);
                         }
                 }
             }
@@ -111,11 +115,16 @@ public class BackTracking {
     static void imprimir(int[][] solucion){
         for (int i = 0; i < solucion.length; i++) {
             for (int j = 0; j < solucion.length; j++) {
-                System.out.print(solucion[i][j] + " ");
+            	if(solucion[i][j] != 0) {
+            		System.out.print(solucion[i][j] + " ");
+            	}else {
+                	System.out.print("_ ");
+                }
             }
             System.out.println("");
         }
         System.out.println();
+        ralentizar();
     }
 
     /**
@@ -132,4 +141,13 @@ public class BackTracking {
         }
     }
 
+	/**
+	 * Metodo para ralentizar las impresiones    
+	 */
+    public static void ralentizar()
+	{
+		try {Thread.sleep (1300);} 
+		catch (InterruptedException e) {}
+	}
+    
 }

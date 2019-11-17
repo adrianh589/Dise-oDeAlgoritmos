@@ -28,7 +28,7 @@ public class ecuacionOperaciones {
 
         while (bandera == false) {
             try {
-                System.out.println("Porfavor, introduzca su ecuación, en caso de polinomios con (parentesis) usar Math.pow: ");
+                System.out.println("Porfavor, introduzca su ecuacion, en caso de polinomios con (parentesis) usar Math.pow: ");
                 ecuacion = br.readLine();//Se captura la formula
 
                 if(! (ecuacion.contains("(") || ecuacion.contains(")")) ){
@@ -39,9 +39,9 @@ public class ecuacionOperaciones {
                     for (int i = 1; i < ecuacionString.length; i++) {
                         if(ecuacionString[i].equals("x")){
                             if(isNumeric(ecuacionString[i-1])){
-                                ecuacionString[i] = "*X";
+                                ecuacionString[i] = "*x";
                             }else{
-                                ecuacionString[i] = "X";
+                                ecuacionString[i] = "x";
                             }
                         }
                     }
@@ -135,7 +135,7 @@ public class ecuacionOperaciones {
 
         ScriptEngineManager manager = new ScriptEngineManager();
         ScriptEngine engine = manager.getEngineByName("js");
-        engine.put("X", expresor);//Las X la cambiamos por el numero a evaluar
+        engine.put("x", expresor);//Las X la cambiamos por el numero a evaluar
         Object operation = engine.eval(ecuacion);
         double resultado = (double) operation;
         return resultado;

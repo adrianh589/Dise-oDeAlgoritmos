@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) throws IOException, ScriptException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String ecuacion = ecuacionOperaciones.capturarFormula();
-        double[] interval = ecuacionOperaciones.intervalo("Introduzca el intervalo para hacer la biseccion", br);
+        double[] interval = ecuacionOperaciones.intervalo("Introduzca el intervalo separado por comas para hacer la biseccion -> ejemplo: 0,1", br);
         System.out.println(DivideYVenceras.DyVBiseccion(interval[0], interval[1], ecuacion));
     }
 }

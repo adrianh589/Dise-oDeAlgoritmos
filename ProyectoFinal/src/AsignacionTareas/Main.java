@@ -20,19 +20,19 @@ public class Main {
     	int[][] tablero = llenarMatrizAleatoria(n);
     	System.out.println("Su tabero generado es: ");
     	backTrack.imprimir(tablero);
-    	System.out.println("\n A continuacion se iniciara con el algoritmo...");
+    	System.out.println("\nA continuacion se iniciara con el algoritmo...");
     	
 
         int persona = 0;
         int tarea = 0;
         int[][] solucionParcial = new int [tablero.length][tablero.length];
 
-        backTrack.backtracking(tablero, persona, tarea, new Stack(), new Stack(), solucionParcial);
-        backTrack.darPosiblesSoluciones(backTrack.solucionFinal);
+        backTrack.VueltaAtras(tablero, persona, 0, new Stack(), solucionParcial);
+        backTrack.asignadorTareas(backTrack.solucionFinal);
     }
     
     /**
-	 * Function to fill the matrix with random numbers
+	 * Llenar matriz aleatoria
 	 * 
 	 * @param length
 	 * @return
