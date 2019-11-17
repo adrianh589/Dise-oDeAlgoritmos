@@ -18,7 +18,7 @@ public class Main {
     	System.out.println("Ingrese la cantidad a calcular, recuerde que personas = tareas");
     	int n = Integer.parseInt(br.readLine());
     	int[][] tablero = llenarMatrizAleatoria(n);
-    	System.out.println("Su tabero generado es: ");
+    	System.out.println("Su tablero generado es: ");
     	backTrack.imprimir(tablero);
     	System.out.println("\nA continuacion se iniciara con el algoritmo...");
     	
@@ -29,6 +29,7 @@ public class Main {
 
         backTrack.VueltaAtras(tablero, persona, 0, new Stack(), solucionParcial);
         backTrack.asignadorTareas(backTrack.solucionFinal);
+	System.out.println("El coste minimo fue de: "+backTrack.minimoCoste);
     }
     
     /**
