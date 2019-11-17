@@ -33,9 +33,9 @@ public class BackTracking {
                     solucion[persona][tarea] = tablero[persona][tarea];//mantenemos una solucion parcial
                     imprimir(solucion);
 
-                        if(conteo > minimoCoste){//Nos devolvemos si el costo supera al minimo
+                        if(conteo > minimoCoste){//Se pregunta si el coste actual es mayot que el minimo
                             System.out.println("El costo de esta via es "+conteo+" y el minimo costo es de "+minimoCoste+" se hara vuelta atras");
-                            if(tarea == tablero.length-1) {//Si hay mas tareas disponibles no podemos devolvernos todavia
+                            if(tarea == tablero.length-1) {//Si no hay mas tareas disponibles nos devolvemos
                             	solucion[persona][tarea] = 0; conteo -= tablero[persona][tarea]; bloquearTarea.pop();
                             	imprimir(solucion);
                                 return false;
