@@ -18,21 +18,21 @@ public class DivideVenceras {
      */
     static long taxiDyV(int xOrig, int yOrig, int xDest, int yDest){
 
-        Main.coordenadasGuardadas.add("("+xOrig+","+yOrig+")");
+    	MainTaxista.coordenadasGuardadas.add("("+xOrig+","+yOrig+")");
 
         if(xOrig == xDest && yOrig == yDest){//Caso Base, si llego al destino es porque es un camino
-            System.out.println(Main.coordenadasGuardadas);
-            Main.coordenadasGuardadas.pop();
+            System.out.println(MainTaxista.coordenadasGuardadas);
+            MainTaxista.coordenadasGuardadas.pop();
             return 1;
         }else if(xOrig > xDest || yOrig < yDest){//Si se sale del camino es porque ya no cuenta como camino
-            Main.coordenadasGuardadas.pop();
+        	MainTaxista.coordenadasGuardadas.pop();
             return 0;
         }
 
         long caminoHaciaElSur = taxiDyV(xOrig,yOrig-1,xDest,yDest);//Toma el camino hacia el sur
         long caminoHaciaElEste = taxiDyV(xOrig+1,yOrig,xDest,yDest);//Toma el camino hacia el este
 
-        Main.coordenadasGuardadas.pop();
+        MainTaxista.coordenadasGuardadas.pop();
 
         return caminoHaciaElSur + caminoHaciaElEste;//Suma ambos caminos
     }

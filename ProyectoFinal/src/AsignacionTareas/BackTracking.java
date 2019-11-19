@@ -5,7 +5,7 @@ import java.util.Timer;
 
 public class BackTracking {
 
-    static int minimoCoste = Integer.MAX_VALUE;
+    public static int minimoCoste = Integer.MAX_VALUE;
     public static int[][] solucionFinal ;
 
     /**
@@ -34,7 +34,7 @@ public class BackTracking {
                     imprimir(solucion);
 
                         if(conteo > minimoCoste){//Se pregunta si el coste actual es mayot que el minimo
-                            System.out.println("El costo de esta via es "+conteo+" y el minimo costo es de "+minimoCoste+" se hara vuelta atras");
+                            System.out.println("El costo de esta via es "+conteo+" y el minimo costo es de "+minimoCoste);
                             if(tarea == tablero.length-1) {//Si no hay mas tareas disponibles nos devolvemos
                             	solucion[persona][tarea] = 0; conteo -= tablero[persona][tarea]; bloquearTarea.pop();
                             	imprimir(solucion);

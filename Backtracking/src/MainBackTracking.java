@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class Main {
+public class MainBackTracking {
 
     public static int[][] tablero = {{1,2,3,4,2},
                                      {5,6,7,8,1},

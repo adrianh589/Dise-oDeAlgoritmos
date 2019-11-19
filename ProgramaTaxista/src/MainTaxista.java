@@ -10,7 +10,7 @@ import java.util.Stack;
  * @author adria
  *
  */
-public class Main {
+public class MainTaxista {
 	
 	public static Stack<String> coordenadasGuardadas = new Stack<String>();
 	

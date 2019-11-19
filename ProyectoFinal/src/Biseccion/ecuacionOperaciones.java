@@ -28,7 +28,8 @@ public class ecuacionOperaciones {
 
         while (bandera == false) {
             try {
-                System.out.println("Porfavor, introduzca su ecuacion, en caso de polinomios con (parentesis) usar Math.pow: ");
+                System.out.println("Porfavor, introduzca su ecuacion, en caso de polinomios con (parentesis) usar Math.pow, para exponentes use la letra e: ");
+                System.out.println("Ejemplo: xe3-8xe2+3x+2");
                 ecuacion = br.readLine();//Se captura la formula
 
                 if(! (ecuacion.contains("(") || ecuacion.contains(")")) ){
@@ -62,7 +63,7 @@ public class ecuacionOperaciones {
                     String cad2 = "";//parte derecha del ^
 
                     for (int i = 0; i < array.length; i++) {//Recorremos el string
-                        if(array[i].equals("^")){//Cuando encuentre un ^ empezara a añadir los valores a la pila
+                        if(array[i].equals("e")){//Cuando encuentre un ^ empezara a anadir los valores a la pila
                             for (int j = i - 1; j >= 0  ; j--) {
                                 pila.add(array[j]);
                                 array[j] = "";
@@ -189,6 +190,7 @@ public class ecuacionOperaciones {
         System.out.println("Intervalo seleccionado");
         System.out.println("Limite inferior = "+array[0]);
         System.out.println("Limite superior = "+array[1]);
+        System.out.println("Buscando respuesta...");
 
         return array;
     }

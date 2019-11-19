@@ -24,6 +24,7 @@ public class MenuPrincipal {
 				break;
 			case 3:
 				AsignacionTareas.Main.main(args);
+				AsignacionTareas.BackTracking.minimoCoste = Integer.MAX_VALUE;
 				break;
 
 			default:
@@ -36,7 +37,7 @@ public class MenuPrincipal {
 	}
 
 	static int opcion() throws NumberFormatException, IOException {
-		System.out.println("***Menu Principal***");
+		System.out.println("\n***Menu Principal***");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println(
 				"Elija su opcion para ejecutar el algoritmo... \n1. Biseccion\n2. Varilla\n3. Asignacion de tareas");
